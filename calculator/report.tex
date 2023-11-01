@@ -1,0 +1,105 @@
+\documentclass[twoside,a4paper,10pt]{article}
+\usepackage{geometry}
+\geometry{margin=1.5cm, vmargin={0pt,1cm}}
+\setlength{\topmargin}{-1cm}
+\setlength{\paperheight}{29.7cm}
+\setlength{\textheight}{25.3cm}
+
+\usepackage{verbatim}
+\usepackage{ctex}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{booktabs} 
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{hyperref}
+% some common command
+\newcommand{\norm}[1]{\lVert #1 \rVert}
+\newcommand{\modulus}[1]{\lvert #1 \rvert}
+
+\begin{document}
+
+\pagestyle{fancy}
+\fancyhead{}
+\lhead{林修弘 3200300602}
+\chead{计算器项目设计与测试说明 }
+\rhead{\today}
+
+
+\section{项目设计思路}
+本项目实现了一个简单的计算器，能够从输入文件中读取表达式，将中缀表达式转换为后缀表达式，然后计算后缀表达式的值，并将结果写入输出文件。以下是项目的设计思路：
+
+\begin{enumerate}
+\item \textbf{Calculator类}: 这个类包含了计算器的主要功能。它有以下方法和属性：
+    \begin{itemize}
+    \item \texttt{Calculator(const std::string\& inputFileName, const std::string\& outputFileName)}：构造函数，用于初始化输入和输出文件流，同时检查文件是否成功打开。
+    \item \texttt{int getOperatorPriority(char c)}：根据运算符的优先级返回一个整数。
+    \item \texttt{bool isOperator(char c)}：检查一个字符是否为运算符。
+    \item \texttt{std::string remove\_illegalchar(std::string expression)}：删除表达式中的非法字符。
+    \item \texttt{std::queue<std::string> in\_to\_post(std::string expression)}：将中缀表达式转换为后缀表达式。
+    \item \texttt{double cal\_post(std::queue<std::string> postfix)}：计算后缀表达式的值。
+    \item \texttt{void processInputFile()}：读取输入文件，处理每行表达式，计算结果并写入输出文件。
+    \item \texttt{std::ifstream inputFile}：用于读取输入文件的文件流。
+    \item \texttt{std::ofstream outputFile}：用于写入输出文件的文件流。
+    \end{itemize}
+\end{enumerate}
+
+\section{测试说明}
+为了测试计算器的功能，我们提供了一个输入文件\texttt{input.txt}，其中包含了多个表达式，每行一个。以下是输入文件的内容：
+
+\begin{lstlisting}
+3.1 * (1.2 + 3.5)
+1.2sdf3!!3 - 0.23
+1t.y21 * (3RR4T + 1s.s00)
+1+)2
+1((2
+4/0
+\end{lstlisting}
+
+
+\subsection{运行程序}
+为了运行程序，只需执行\texttt{main()} 函数即可。程序将从\texttt{input.txt} 读取表达式，并将结果写入\texttt{output.txt} 文件。
+
+\begin{lstlisting}
+int main() 
+{
+    Calculator calculator("input.txt", "output.txt");
+    calculator.processInputFile();
+    return 0;
+}
+\end{lstlisting}
+
+\subsection{结果分析和结论}
+根据输入文件中的表达式，程序将计算结果写入输出文件。结果如下：
+
+\begin{tabular}{|c|c|}
+\hline
+\textbf{输入表达式} & \textbf{测试结果} \\
+\hline
+3.1 * (1.2 + 3.5) & 14.57 \\
+\hline
+1.2sdf3!!3 - 0.23 & 1.003 \\
+\hline
+1t.y21 * (3RR4T + 1s.s00) & 42.35 \\
+\hline
+1+)2 & Error: Unmatched closing parenthesis. \\
+\hline
+1((2 & Error: Unmatched opening parenthesis. \\
+\hline
+4/0 & Error: Division by zero is not allowed. \\
+\hline
+\end{tabular}
+\\
+计算器成功计算了合法表达式，正确报告了括号不匹配的错误，以及不允许除以零的错误。因此，计算器在处理各种情况时表现出良好的稳定性和健壮性。
+
+\end{document}
+
+
