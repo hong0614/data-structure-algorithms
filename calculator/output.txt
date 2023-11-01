@@ -1,0 +1,6 @@
+14.57
+1.003
+42.35
+Error: Unmatched closing parenthesis.
+Error: Unmatched opening parenthesis.
+Error: Division by zero is not allowed.
