@@ -1,0 +1,20 @@
+Minimum number of coins required: 2
+Elapsed time: 2.31e-05 seconds
+Minimum number of coins required: 2
+Elapsed time: 3.19e-05 seconds
+Minimum number of coins required: 3
+Elapsed time: 3.21e-05 seconds
+Minimum number of coins required: 2
+Elapsed time: 2.54e-05 seconds
+Minimum number of coins required: 2
+Elapsed time: 1.93e-05 seconds
+Minimum number of coins required: 4
+Elapsed time: 4e-05 seconds
+Minimum number of coins required: 9
+Elapsed time: 5.66e-05 seconds
+Minimum number of coins required: 8
+Elapsed time: 3.26e-05 seconds
+Minimum number of coins required: 16
+Elapsed time: 9.2e-05 seconds
+Minimum number of coins required: 7
+Elapsed time: 3.5e-05 seconds
