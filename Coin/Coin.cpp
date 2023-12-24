@@ -48,7 +48,7 @@ int minCoins(const vector<int>& availableCoins, int targetAmount)
 
 int main()
 {
-    ifstream inputFile("input1.txt");
+    ifstream inputFile("input.txt");
     ofstream outputFile("output.txt");
 
     if (!inputFile)
