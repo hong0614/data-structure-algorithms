@@ -1,0 +1,72 @@
+\documentclass[twoside,a4paper,10pt]{article}
+\usepackage{geometry}
+\geometry{margin=1.5cm, vmargin={0pt,1cm}}
+\usepackage{geometry}
+\setlength{\topmargin}{-1cm}
+\setlength{\paperheight}{29.7cm}
+\setlength{\textheight}{25.3cm}
+
+\usepackage{verbatim}
+\usepackage{ctex}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{booktabs} 
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{hyperref}
+% some common command
+\newcommand{\norm}[1]{\lVert #1 \rVert}
+\newcommand{\modulus}[1]{\lvert #1 \rvert}
+
+\begin{document}
+
+\pagestyle{fancy}
+\fancyhead{}
+\lhead{林修弘 3200300602}
+\chead{动态规划}
+\rhead{\today}
+
+\section{测试结果}
+
+以下是针对不同目标金额的测试结果：
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+目标金额 & 计算结果 & 运行时间 (秒) \\
+\hline
+11 & 2 & $2.31 \times 10^{-5}$ \\
+35 & 2 & $3.19 \times 10^{-5}$ \\
+40 & 3 & $3.21 \times 10^{-5}$ \\
+30 & 2 & $2.54 \times 10^{-5}$ \\
+20 & 2 & $1.93 \times 10^{-5}$ \\
+52 & 4 & $4.00 \times 10^{-5}$ \\
+157 & 9 & $5.66 \times 10^{-5}$ \\
+104 & 8 & $3.26 \times 10^{-5}$ \\
+313 & 16 & $9.20 \times 10^{-5}$ \\
+112 & 7 & $3.50 \times 10^{-5}$ \\
+\hline
+\end{tabular}
+\caption{测试结果}
+\end{table}
+
+\section{理论分析}
+
+理论上，找零钱问题的时间复杂度为 $O(N \cdot M)$，其中 $N$ 是目标金额，$M$ 是硬币面额的数量。在此情况下，$N$ 的最大值是 313，$M$ 的值是 4，因此理论上的时间复杂度非常低，远低于实际观察到的运行时间。
+
+\section{结论}
+
+通过实际运行测试，我们观察到算法的运行时间非常短暂，通常在 $10^{-5}$ 秒的数量级。这证明了该算法在解决找零钱问题时的高效性，与理论分析结果一致。
+
+\end{document}
+
+
