@@ -1,0 +1,71 @@
+\documentclass[twoside,a4paper,10pt]{article}
+\usepackage{geometry}
+\geometry{margin=1.5cm, vmargin={0pt,1cm}}
+\usepackage{geometry}
+\setlength{\topmargin}{-1cm}
+\setlength{\paperheight}{29.7cm}
+\setlength{\textheight}{25.3cm}
+
+\usepackage{verbatim}
+\usepackage{ctex}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{booktabs} 
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{hyperref}
+% some common command
+\newcommand{\norm}[1]{\lVert #1 \rVert}
+\newcommand{\modulus}[1]{\lvert #1 \rvert}
+
+\begin{document}
+
+\pagestyle{fancy}
+\fancyhead{}
+\lhead{林修弘 3200300602}
+\chead{Binart Tree}
+\rhead{\today}
+
+
+\section*{问题：BinaryTree的设计}
+课本提供的代码中, 给出的头文件\texttt{BinarySearchTree.h} ,\texttt{AvlTree.h},\texttt{ RedBlackTree.h}和 \texttt{SplayTree.h}分别实现了对应的功能. 由于是教学代码, 每一个头文件都是独立的. 现在, 请根据它们各自的用途, 整理它们的逻辑关系, 重构全部代码, 并用继承关系予以表达.
+
+\section{BinaryTree类}
+BinaryTree 类是一个模板类，用于实现二叉树的基本结构。它定义了一个受保护的结构 BinaryNode 和一个指向 BinaryNode 的指针 root。此外，它还声明了一系列虚拟函数，以便在派生类中进行具体实现。
+
+\subsection{BinaryNode}
+可以看到BinarySearchTree和SplayTree的派生类中的节点均使用了结构体\texttt{BinaryNode}, AvlTree和RedBlackTree的节点需要对于\texttt{BinaryNode}中的成员进行了扩充，所以可以用继承的关系处理这两种节点。
+
+\subsection{虚拟函数}
+给出派生类的共同函数
+\begin{verbatim}
+virtual const Comparable& findMin() const = 0;
+virtual const Comparable& findMax() const = 0;
+virtual bool contains(const Comparable& x) const = 0;
+virtual bool isEmpty() const { return root == nullptr; }
+virtual void printTree(ostream& out = cout) const = 0;
+virtual void makeEmpty() = 0;
+virtual void insert(const Comparable& x) = 0;
+virtual void insert(Comparable&& x) = 0;
+virtual void remove(const Comparable& x) = 0;
+\end{verbatim}
+
+\section{实现}
+给出\texttt{TestBinaryTree.cpp},代码包含原有的\texttt{TestBinarySearchTree.h} ,\texttt{TestAvlTree.h},\texttt{TestRedBlackTree.h}和 \texttt{TestSplayTree.h},只要能够完成运行并且"Finish"或者"Complete"即表该树运行成功。
+
+\subsection{疑点}
+按照原有的\texttt{TestSplayTree.h}测试SplayTree时，我发现代码无法成功运行，但是当我把\texttt{NUMS4=30000}改成\texttt{NUMS4=3000}就能成功运行了。
+
+\end{document}
+
+
+
+
